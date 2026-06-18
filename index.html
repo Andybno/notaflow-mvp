@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MVP para conferência e aprovação de compras enviadas por WhatsApp.">
+  <title>NotaFlow — Compras para estoque</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="#inicio" aria-label="NotaFlow">
+        <span class="logo">N</span>
+        <span><strong>NotaFlow</strong><small>Compras para estoque</small></span>
+      </a>
+      <nav>
+        <button class="nav-item active" data-page="inicio"><span>⌂</span> Visão geral</button>
+        <button class="nav-item" data-page="restaurantes"><span>◇</span> Restaurantes</button>
+      </nav>
+      <div class="side-note"><span class="online-dot"></span><strong>WhatsApp conectado</strong><small>Última sincronização agora</small></div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <button class="menu" id="menuButton" aria-label="Abrir menu">☰</button>
+        <div><p class="eyebrow">OPERAÇÃO DE COMPRAS</p><h1 id="pageTitle">Visão geral</h1></div>
+        <div class="profile"><span>AD</span><div><strong>Administrador</strong><small>Conta principal</small></div></div>
+      </header>
+
+      <section class="page active" id="inicio">
+        <div class="hero">
+          <div>
+            <span class="live"><i></i> Atualizado pelo WhatsApp</span>
+            <h2>Compras aguardando<br>uma rápida conferência.</h2>
+            <p>A IA leu as notas fiscais e organizou os itens. Revise os dados antes de enviá-los ao estoque.</p>
+          </div>
+          <button class="approve-all" id="approveAll"><span>✓</span><strong>Aprovar tudo</strong><small id="approveAllLabel">8 itens selecionados</small></button>
+        </div>
+
+        <div class="stats">
+          <article><span class="stat-icon blue">↙</span><div><small>Pendentes</small><strong id="pendingCount">0</strong></div></article>
+          <article><span class="stat-icon green">✓</span><div><small>Aprovados hoje</small><strong id="approvedCount">0</strong></div></article>
+          <article><span class="stat-icon orange">◇</span><div><small>Restaurantes ativos</small><strong id="restaurantCount">0</strong></div></article>
+        </div>
+
+        <section class="card">
+          <div class="card-head">
+            <div><h3>Itens recebidos</h3><p>Confira descrição, quantidade e nota de origem.</p></div>
+            <div class="filters"><select id="restaurantFilter" aria-label="Filtrar restaurante"></select><button id="selectAll">Selecionar todos</button></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th><input type="checkbox" id="masterCheck" aria-label="Selecionar todos"></th><th>Item</th><th>Restaurante</th><th>Quantidade</th><th>Recebido</th><th>Status</th><th></th></tr></thead>
+              <tbody id="itemsTable"></tbody>
+            </table>
+          </div>
+          <div class="empty hidden" id="emptyState">Nenhum item pendente neste filtro. Tudo em ordem por aqui.</div>
+        </section>
+      </section>
+
+      <section class="page" id="restaurantes">
+        <div class="section-title"><div><p class="eyebrow">PLANO CONTRATADO</p><h2>Restaurantes</h2><p>Gerencie as unidades e as pessoas autorizadas a enviar notas.</p></div><button class="primary" id="newRestaurant">+ Novo restaurante</button></div>
+        <div class="restaurant-grid" id="restaurantGrid"></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="itemDialog">
+    <button class="dialog-close" data-close="itemDialog">×</button>
+    <div class="dialog-grid">
+      <div class="receipt" id="receiptPreview"></div>
+      <div class="dialog-info"><span class="tag">Leitura da IA</span><h2 id="dialogItem"></h2><p id="dialogRestaurant"></p><div class="confidence">Confiança da leitura <strong>98%</strong></div><label>Quantidade<input id="dialogQuantity"></label><label>Descrição<input id="dialogDescription"></label><div class="dialog-actions"><button class="danger" id="rejectItem">Recusar</button><button class="primary" id="approveItem">Aprovar item</button></div></div>
+    </div>
+  </dialog>
+
+  <dialog id="restaurantDialog">
+    <button class="dialog-close" data-close="restaurantDialog">×</button>
+    <form id="restaurantForm">
+      <p class="eyebrow">NOVA UNIDADE</p><h2>Cadastrar restaurante</h2>
+      <label>Nome da unidade<input name="name" required placeholder="Ex.: Unidade Centro"></label>
+      <label>CNPJ<input name="cnpj" required placeholder="00.000.000/0001-00"></label>
+      <label>Responsável<input name="manager" required placeholder="Nome completo"></label>
+      <label>WhatsApp autorizado<input name="phone" required placeholder="(11) 99999-9999"></label>
+      <button class="primary" type="submit">Salvar restaurante</button>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
