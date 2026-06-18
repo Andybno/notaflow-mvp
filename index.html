@@ -66,6 +66,37 @@
         <div class="section-title"><div><p class="eyebrow">PLANO CONTRATADO</p><h2>Restaurantes</h2><p>Gerencie as unidades e as pessoas autorizadas a enviar notas.</p></div><button class="primary" id="newRestaurant">+ Novo restaurante</button></div>
         <div class="restaurant-grid" id="restaurantGrid"></div>
       </section>
+
+      <section class="page" id="usuarios">
+        <div class="users-heading">
+          <button class="back-button" id="backToRestaurants">← Voltar para restaurantes</button>
+          <div>
+            <p class="eyebrow">ACESSOS PELO WHATSAPP</p>
+            <h2 id="usersRestaurantName">Usuários</h2>
+            <p>Configure quem está autorizado a enviar notas fiscais por esta unidade.</p>
+          </div>
+        </div>
+        <div class="users-layout">
+          <form class="user-form-card" id="userForm">
+            <h3 id="userFormTitle">Adicionar usuário</h3>
+            <p>Cadastre o nome e o WhatsApp usado para enviar as notas.</p>
+            <input type="hidden" name="userId">
+            <label>Nome do usuário<input name="userName" required placeholder="Ex.: João Silva"></label>
+            <label>Telefone / WhatsApp<input name="userPhone" required inputmode="tel" placeholder="Ex.: (11) 99999-9999"></label>
+            <div class="user-form-actions">
+              <button class="secondary hidden" type="button" id="cancelUserEdit">Cancelar</button>
+              <button class="primary" type="submit" id="saveUser">Adicionar usuário</button>
+            </div>
+          </form>
+          <section class="users-list-card">
+            <div class="users-list-head">
+              <div><h3>Usuários cadastrados</h3><p>Estas pessoas poderão enviar notas fiscais para leitura da IA.</p></div>
+              <span class="users-total" id="usersTotal">0 usuários</span>
+            </div>
+            <div class="users-list" id="usersList"></div>
+          </section>
+        </div>
+      </section>
     </main>
   </div>
 
