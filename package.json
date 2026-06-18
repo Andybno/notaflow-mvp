@@ -1,0 +1,18 @@
+{
+  "name": "notaflow-mvp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MVP para conferência e aprovação de compras recebidas por WhatsApp.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "engines": {
+    "node": ">=20 <25"
+  },
+  "devDependencies": {
+    "vite": "^7.1.7"
+  }
+}

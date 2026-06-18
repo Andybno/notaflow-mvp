@@ -15,15 +15,32 @@ MVP de uma central de conferência para compras de restaurantes. Os itens extra�
 
 ## Executar
 
-Abra `index.html` diretamente ou use um servidor local:
+Requer Node.js 20 ou superior:
 
 ```bash
-npx serve .
+npm install
+npm run dev
+```
+
+Para validar a versão de produção:
+
+```bash
+npm run build
+npm run preview
 ```
 
 ## Publicar na Hostinger
 
-Envie `index.html`, `styles.css` e `app.js` para a pasta `public_html`, ou conecte este repositório pelo recurso de deploy Git da Hostinger.
+O projeto usa Vite, framework reconhecido automaticamente pelo deploy Node.js da Hostinger.
+
+Ao importar este repositório, confirme:
+
+- framework: `Vite`;
+- comando de build: `npm run build`;
+- diretório de saída: `dist`;
+- versão do Node.js: `20.x`, `22.x` ou `24.x`.
+
+Também é possível executar `npm run build` e enviar o conteúdo da pasta `dist` para `public_html`.
 
 ## Próxima etapa de produção
 
